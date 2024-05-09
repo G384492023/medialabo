@@ -6,3 +6,8 @@ div#zentai {
 	flex-direction: row;
 	width: 1024px;
 }
+
+h1 {
+    font-size: 200%;
+    color: rgb(145, 202, 202);
+}
