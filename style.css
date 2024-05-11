@@ -1,13 +1,39 @@
-div#zentai {
+div.zentai {
     display: grid;
     grid-template-columns: 1fr 1fr;
 	grid-auto-rows: 200px 200px;
 	grid-gap: 10px;
 	flex-direction: row;
-	width: 1024px;
+	width: auto;
+    padding: 5px;
+}
+
+.box {
+    background-color: rgb(154, 212, 169);
 }
 
 h1 {
-    font-size: 200%;
-    color: rgb(145, 202, 202);
+    font-size: 300%;
+    color: blue;
 }
+
+h2 {
+    font-size: 200%;
+}
+
+body {
+    background-color: rgb(247, 209, 241);
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: rgb(134, 134, 80);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
