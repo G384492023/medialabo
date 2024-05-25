@@ -19,26 +19,34 @@ function hantei() {
   let yoso = 4;
   
   kaisu = kaisu + 1;
+
+  let s = document.querySelector('span#kaisu');
+    s.textContent = kaisu;
+
+    let a = document.querySelector('span#answer');
+    a.textContent = yoso;
+
   console.log((kaisu) + "回目の予想:" + yoso)
   
   // 課題3-1: 正解判定する
   // kotae と yoso が一致するかどうか調べて結果を出力
   // 課題3-1における出力先はコンソール
+  let b = document.querySelector('p#result');
 
   if (kaisu < 3) {
     if (kotae === yoso) {
-        console.log("正解です。おめでとう！");
+      b.textContent = ("正解です。おめでとう！");
         kaisu = kaisu + 3;
       }
       if (kotae > yoso ) {
-        console.log("まちがい. 答えはもっと大きいですよ");
+        b.textContent = ("まちがい. 答えはもっと大きいですよ");
       }
       if (kotae < yoso) {
-        console.log("まちがい. 答えはもっと小さいですよ");
+        b.textContent = ("まちがい. 答えはもっと小さいですよ");
       }
   } else if (kotae !== yoso && kaisu === 3) {
-    console.log("まちがい. 残念でした答えは " + kotae + " です.");
+    b.textContent = ("まちがい. 残念でした答えは " + kotae + " です.");
   } else if (kaisu > 3) {
-    console.log("答えは " + kotae + " でした.すでにゲームは終わっています");
+    b.textContent = ("答えは " + kotae + " でした.すでにゲームは終わっています");
   } 
 }

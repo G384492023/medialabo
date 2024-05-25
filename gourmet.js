@@ -200,4 +200,56 @@ let data = {
 };
 
 /////////// 課題3-2 ここからプログラムを書こう
-console.log(data.results.shop.name);
+//let div = document.querySelector('div#boxa');
+
+//let beeLink = document.createElement('tr#a');
+
+let s = document.querySelector('div#result');
+
+
+let list = [
+  {a:data.results.shop[0].name},
+  {a:data.results.shop[0].access},
+  {a:data.results.shop[0].address},
+  {a:data.results.shop[0].budget.name},
+  {a:data.results.shop[0].catch},
+  {a:data.results.shop[0].genre.name},
+  {a:data.results.shop[0].open},
+  {a:data.results.shop[0].station_name},
+  {a:data.results.shop[0].sub_genre.name},
+  {a:data.results.shop[1].name},
+  {a:data.results.shop[1].access},
+  {a:data.results.shop[1].address},
+  {a:data.results.shop[1].budget.name},
+  {a:data.results.shop[1].catch},
+  {a:data.results.shop[1].genre.name},
+  {a:data.results.shop[1].open},
+  {a:data.results.shop[1].station_name},
+  {a:data.results.shop[1].sub_genre.name}
+]
+
+for (let b of list) {
+  let td = document.createElement('td');
+  s.textContent = (b.a);
+  s.insertAdjacentElement('afterend',td);
+}
+
+/*s.textContent = (data.results.shop[0].name);
+s.textContent = (data.results.shop[0].access);
+s.textContent = (data.results.shop[0].address);
+s.textContent = (data.results.shop[0].budget.name);
+s.textContent = (data.results.shop[0].catch);
+s.textContent = (data.results.shop[0].genre.name);
+s.textContent = (data.results.shop[0].open);
+s.textContent = (data.results.shop[0].station_name);
+s.textContent = (data.results.shop[0].sub_genre.name);
+
+s.textContent = (data.results.shop[1].name);
+s.textContent = (data.results.shop[1].access);
+s.textContent = (data.results.shop[1].address);
+s.textContent = (data.results.shop[1].budget.name);
+s.textContent = (data.results.shop[1].catch);
+s.textContent = (data.results.shop[1].genre.name);
+s.textContent = (data.results.shop[1].open);
+s.textContent = (data.results.shop[1].station_name);
+s.textContent = (data.results.shop[1].sub_genre.name);*/
