@@ -15,14 +15,13 @@ a.addEventListener('click', hantei);
 function hantei() {
   // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
   let i = document.querySelector('input[name = "seisu"]');
-  Number(i);
-  let yoso = i.value;
+  let yoso = Number(i.value);
 
   
   kaisu = kaisu + 1;
 
   let s = document.querySelector('span#kaisu');
-    s.textContent = kaisu;
+    s.textContent = (kaisu + "回目の予想:");
 
     let a = document.querySelector('span#answer');
     a.textContent = yoso;
@@ -32,12 +31,14 @@ function hantei() {
   // 課題3-1: 正解判定する
   // kotae と yoso が一致するかどうか調べて結果を出力
   // 課題3-1における出力先はコンソール
+  let n = 0;
+
   let b = document.querySelector('p#result');
 
-  if (kaisu < 3) {
+  /*if (kaisu < 3) {
     if (kotae === yoso) {
       b.textContent = ("正解です。おめでとう！");
-        kaisu = kaisu + 3;
+        n = n + 1;
       }
       if (kotae > yoso ) {
         b.textContent = ("まちがい. 答えはもっと大きいですよ");
@@ -47,7 +48,30 @@ function hantei() {
       }
   } else if (kotae !== yoso && kaisu === 3) {
     b.textContent = ("まちがい. 残念でした答えは " + kotae + " です.");
+  } else if (kotae == yoso && kaisu === 3 && n !== 0) {
+    b.textContent = ("正解です。おめでとう！");
+    n = n + 1;
   } else if (kaisu > 3) {
     b.textContent = ("答えは " + kotae + " でした.すでにゲームは終わっています");
-  } 
+  } */
+
+  if (n > 0) {
+    b.textContent = ("答えは " + kotae + " でした.すでにゲームは終わっています");
+  } else if (kaisu > 3) {
+    b.textContent = ("答えは " + kotae + " でした.すでにゲームは終わっています");
+  } else if (kotae === yoso && kaisu < 3) {
+    b.textContent = ("正解です。おめでとう！");
+      n = n + 1;
+    } else if (kotae > yoso && kaisu < 3) {
+      b.textContent = ("まちがい. 答えはもっと大きいですよ");
+    } else if (kotae < yoso && kaisu < 3) {
+      b.textContent = ("まちがい. 答えはもっと小さいですよ");
+    } else if (kotae !== yoso && kaisu === 3) {
+      b.textContent = ("まちがい. 残念でした答えは " + kotae + " です.");
+    } else if (kotae == yoso && kaisu === 3 && n !== 0) {
+      b.textContent = ("正解です。おめでとう！");
+      n = n + 1;
+    }
+  
 }
+
