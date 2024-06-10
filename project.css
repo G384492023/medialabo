@@ -1,16 +1,47 @@
-.box {
-    color: blue;
-}
 
 h1 {
     text-align: center;
-    color: blue;
+    color: orange;
+    font-size: 300%;
 }
 
 body {
-    background-color: rgb(72, 163, 163);
+    background: linear-gradient(to left, blue, pink);
 }
 
-div.zentai {
-    padding: 5px;
+#ken0 {
+    text-align: center;
+    border: solid;
+    background-color: rgb(105, 171, 109);
+}
+
+#ken {
+    text-align: center;
+    border: solid;
+    background-color: rgb(171, 105, 148);
+}
+
+#ken1 {
+    text-align: center;
+    color: white;
+}
+
+#ken2 {
+    text-align: center;
+    color: white;
+}
+
+#izakaya {
+    color: yellow;
+    font-size: 200%;
+}
+
+#izakaya1 {
+    color: yellow;
+    font-size: 200%;
+}
+
+li {
+    padding: 10px 15px;
+    font-size: 150%;
 }

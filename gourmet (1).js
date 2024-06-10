@@ -227,7 +227,10 @@ let list = [
 let h2 = document.querySelector('h2#ken');
 
 let h21 = document.createElement('h2');
-h21.textContent = list.a;
+h21.textContent = data.results.shop[0].name;
+h2.insertAdjacentElement('afterend', h21)
 
 let bg1 = document.createElement('ul');
-h2.insertAdjacentElement('afterend', bg1);
+h21.insertAdjacentElement('afterend', bg1);
+
+console.log(data.results.shop[0].name)

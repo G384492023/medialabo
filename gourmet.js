@@ -200,34 +200,190 @@ let data = {
 };
 
 /////////// 課題3-2 ここからプログラムを書こう
+let kensaku = document.querySelector('#print');
+kensaku.addEventListener('click', kensakuAnswer);
+
 let s = document.querySelector('div#result');
 
+let kaisu = 0;
+let kaz = 0;
+let kaz1 = 0;
 
-let list = [
-  {a:data.results.shop[0].name},
-  {b:data.results.shop[0].access},
-  {c:data.results.shop[0].address},
-  {d:data.results.shop[0].budget.name},
-  {e:data.results.shop[0].catch},
-  {f:data.results.shop[0].genre.name},
-  {g:data.results.shop[0].open},
-  {h:data.results.shop[0].station_name},
-  {i:data.results.shop[0].sub_genre.name},
-  {j:data.results.shop[1].name},
-  {k:data.results.shop[1].access},
-  {l:data.results.shop[1].address},
-  {m:data.results.shop[1].budget.name},
-  {n:data.results.shop[1].catch},
-  {o:data.results.shop[1].genre.name},
-  {p:data.results.shop[1].open},
-  {q:data.results.shop[1].station_name},
-  {r:data.results.shop[1].sub_genre.name}
-]
+function kensakuAnswer() {
+  let namae = document.querySelector('input[name = "shurui"]');
+  let genre;
+  if(shurui1.checked || shurui2.checked) {
+    genre = 'G001';
+  }
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/' + genre + '.json'
 
-let h2 = document.querySelector('h2#ken');
+  axios.get(url)
+        .then(showResult)   
+        .catch(showError)   
+        .then(finish);
+}
 
-let h21 = document.createElement('h2');
-h21.textContent = list.a;
+function showResult(resp) {
+  let data = resp.data;
 
-let bg1 = document.createElement('ul');
-h2.insertAdjacentElement('afterend', bg1);
+  if (typeof data === 'string') {
+    data = JSON.parse(data);
+  }
+
+  a(data);
+
+  console.log(data);
+
+  console.log(data.x);
+}
+
+function showError(err) {
+  console.log(err);
+}
+
+function finish() {
+  console.log('Ajax 通信が終わりました');
+}
+
+
+function a(data) {
+  if (shurui1.checked) {
+    kaz = kaz + 1;
+    kaisu = kaisu + 1;
+
+    let div = document.createElement('div');
+    div.setAttribute('id', 'div');
+    s.insertAdjacentElement('afterend', div);
+
+    let gurume = document.createElement('h2');
+    gurume.setAttribute('id', 'ken0');
+    gurume.textContent = '検索結果';
+    div.insertAdjacentElement('beforeend', gurume);
+
+    let h2 = document.querySelector('h2#ken0');
+
+
+    let h21 = document.createElement('h2');
+    h21.setAttribute('id', 'ken1')
+    h21.textContent = data.results.shop[0].name;
+    h2.insertAdjacentElement('afterend', h21)
+
+    let bg = document.createElement('ul');
+    bg.setAttribute('id', 'kukuri');
+    h21.insertAdjacentElement('afterend', bg);
+
+
+    let a = document.querySelector('ul#kukuri');
+
+    let bg5 = document.createElement('li');
+    bg5.setAttribute('id', 'izakaya');
+    bg5.textContent = data.results.shop[0].genre.name;
+    a.insertAdjacentElement('beforeend', bg5);
+
+    let bg8 = document.createElement('li');
+    bg8.textContent = ('サブジャンル・・・　' + data.results.shop[0].sub_genre.name);
+    a.insertAdjacentElement('beforeend', bg8);
+
+    let bg1 = document.createElement('li');
+    bg1.textContent = ('場所・・・　' + data.results.shop[0].access);
+    a.insertAdjacentElement('beforeend', bg1);
+
+    let bg2 = document.createElement('li');
+    bg2.textContent = ('住所・・・　' + data.results.shop[0].address);
+    a.insertAdjacentElement('beforeend', bg2);
+
+    let bg3 = document.createElement('li');
+    bg3.textContent = ('予算・・・　' + data.results.shop[0].budget.name);
+    a.insertAdjacentElement('beforeend', bg3);
+
+    let bg6 = document.createElement('li');
+    bg6.textContent = ('営業日時・営業時間・・・　' + data.results.shop[0].open);
+    a.insertAdjacentElement('beforeend', bg6);
+
+    let bg7 = document.createElement('li');
+    bg7.textContent = ('最寄駅・・・　' + data.results.shop[0].station_name);
+    a.insertAdjacentElement('beforeend', bg7);
+
+    let bg4 = document.createElement('li');
+    bg4.textContent = data.results.shop[0].catch;
+    a.insertAdjacentElement('beforeend', bg4);
+
+  } else if (shurui2.checked) {
+    kaz1 = kaz1 + 1;
+    kaisu = kaisu + 1;
+
+    let div1 = document.createElement('div');
+    div1.setAttribute('id', 'div1');
+    s.insertAdjacentElement('afterend', div1);
+
+    let gurume1 = document.createElement('h2');
+    gurume1.setAttribute('id', 'ken');
+    gurume1.textContent = '検索結果';
+    div1.insertAdjacentElement('beforeend', gurume1);
+
+    let h1 = document.querySelector('h2#ken');
+
+
+    let h22 = document.createElement('h2');
+    h22.setAttribute('id', 'ken2');
+    h22.textContent = data.results.shop[1].name;
+    h1.insertAdjacentElement('afterend', h22);
+
+    let kk = document.createElement('ul');
+    kk.setAttribute('id', 'kuri');
+    h22.insertAdjacentElement('afterend', kk);
+
+    let b = document.querySelector('ul#kuri');
+
+    let kk5 = document.createElement('li');
+    kk5.setAttribute('id', 'izakaya1');
+    kk5.textContent = data.results.shop[1].genre.name;
+    b.insertAdjacentElement('beforeend', kk5);
+
+    let kk8 = document.createElement('li');
+    kk8.textContent = ('サブジャンル・・・　' + data.results.shop[1].sub_genre.name);
+    b.insertAdjacentElement('beforeend', kk8);
+
+    let kk1 = document.createElement('li');
+    kk1.textContent = ('場所・・・　' + data.results.shop[1].access);
+    b.insertAdjacentElement('beforeend', kk1);
+
+    let kk2 = document.createElement('li');
+    kk2.textContent = ('住所・・・　' + data.results.shop[1].address);
+    b.insertAdjacentElement('beforeend', kk2);
+
+    let kk3 = document.createElement('li');
+    kk3.textContent = ('予算・・・　' + data.results.shop[1].budget.name);
+    b.insertAdjacentElement('beforeend', kk3);
+
+    let kk6 = document.createElement('li');
+    kk6.textContent = ('営業日時・営業時間・・・　' + data.results.shop[1].open);
+    b.insertAdjacentElement('beforeend', kk6);
+
+    let kk7 = document.createElement('li');
+    kk7.textContent = ('最寄駅・・・　' + data.results.shop[1].station_name);
+    b.insertAdjacentElement('beforeend', kk7);
+
+    let kk4 = document.createElement('li');
+    kk4.textContent = data.results.shop[1].catch;
+    b.insertAdjacentElement('beforeend', kk4);
+
+  }
+
+
+  if (kaisu >= 2) {
+    if (kaz === 1 && kaz1 === 1 && shurui1.checked) {
+      div1.remove();
+      kaz1 = kaz1 - 1;
+    } else if (kaz === 1 && kaz1 === 1 && shurui2.checked) {
+      div.remove();
+      kaz = kaz - 1;
+    } else if (kaz === 2 && kaz1 === 0) {
+      div.remove();
+      kaz = kaz - 1;
+    } else if (kaz === 0 && kaz1 === 2) {
+      div1.remove();
+      kaz1 = kaz1 - 1;
+    }
+  }
+}

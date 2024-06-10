@@ -42,9 +42,9 @@ function hantei() {
   } else if (kotae === yoso) {
     b.textContent = ("正解です。おめでとう！");
     ai = ai + 4;
-  } else if (kotae > yoso ) {
+  } else if (kotae > yoso && kaisu < 3) {
     b.textContent = ("まちがい. 答えはもっと大きいですよ");
-  } else if (kotae < yoso) {
+  } else if (kotae < yoso && kaisu < 3) {
     b.textContent = ("まちがい. 答えはもっと小さいですよ");
   } else if (kaisu === 3) {
     b.textContent = ("まちがい. 残念でした答えは " + kotae + " です.");
