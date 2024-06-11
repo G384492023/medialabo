@@ -210,44 +210,10 @@ let kaz = 0;
 let kaz1 = 0;
 
 function kensakuAnswer() {
-  let namae = document.querySelector('select#gurume');
-  let idx = namae.selectedIndex;
-  console.log(idx);
+  let namae = document.querySelector('input[name = "shurui"]');
   let genre;
-  if(idx === 0) {
+  if(shurui1.checked || shurui2.checked) {
     genre = 'G001';
-  } else if(idx === 1) {
-    genre = 'G002';
-  } else if(idx === 2) {
-    genre = 'G003';
-  } else if(idx === 3) {
-    genre = 'G004';
-  } else if(idx === 4) {
-    genre = 'G005';
-  } else if(idx === 5) {
-    genre = 'G006';
-  } else if(idx === 6) {
-    genre = 'G007';
-  } else if(idx === 7) {
-    genre = 'G008';
-  } else if(idx === 8) {
-    genre = 'G009';
-  } else if(idx === 9) {
-    genre = 'G010';
-  } else if(idx === 10) {
-    genre = 'G011';
-  } else if(idx === 11) {
-    genre = 'G012';
-  } else if(idx === 12) {
-    genre = 'G013';
-  } else if(idx === 13) {
-    genre = 'G014';
-  } else if(idx === 14) {
-    genre = 'G015';
-  } else if(idx === 15) {
-    genre = 'G016';
-  } else if(idx === 16) {
-    genre = 'G017';
   }
   let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/' + genre + '.json'
 
@@ -264,118 +230,7 @@ function showResult(resp) {
     data = JSON.parse(data);
   }
 
-  let div = document.createElement('div');
-    div.setAttribute('id', 'div');
-    s.insertAdjacentElement('afterend', div);
-
-    let gurume = document.createElement('h2');
-    gurume.setAttribute('id', 'ken0');
-    gurume.textContent = '検索結果';
-    div.insertAdjacentElement('beforeend', gurume);
-
-    let h2 = document.querySelector('h2#ken0');
-
-
-    let h21 = document.createElement('h2');
-    h21.setAttribute('id', 'ken1')
-    h21.textContent = data.results.shop[0].name;
-    h2.insertAdjacentElement('afterend', h21)
-
-    let bg = document.createElement('ul');
-    bg.setAttribute('id', 'kukuri');
-    h21.insertAdjacentElement('afterend', bg);
-
-
-    let a = document.querySelector('ul#kukuri');
-
-    let bg5 = document.createElement('li');
-    bg5.setAttribute('id', 'izakaya');
-    bg5.textContent = data.results.shop[0].genre.name;
-    a.insertAdjacentElement('beforeend', bg5);
-
-    let bg1 = document.createElement('li');
-    bg1.textContent = ('場所・・・　' + data.results.shop[0].access);
-    a.insertAdjacentElement('beforeend', bg1);
-
-    let bg2 = document.createElement('li');
-    bg2.textContent = ('住所・・・　' + data.results.shop[0].address);
-    a.insertAdjacentElement('beforeend', bg2);
-
-    let bg3 = document.createElement('li');
-    bg3.textContent = ('予算・・・　' + data.results.shop[0].budget.name);
-    a.insertAdjacentElement('beforeend', bg3);
-
-    let bg6 = document.createElement('li');
-    bg6.textContent = ('営業日時・営業時間・・・　' + data.results.shop[0].open);
-    a.insertAdjacentElement('beforeend', bg6);
-
-    let bg7 = document.createElement('li');
-    bg7.textContent = ('最寄駅・・・　' + data.results.shop[0].station_name);
-    a.insertAdjacentElement('beforeend', bg7);
-
-    let bg4 = document.createElement('li');
-    bg4.textContent = data.results.shop[0].catch;
-    a.insertAdjacentElement('beforeend', bg4);
-
-    let bg8 = document.createElement('li');
-    bg8.textContent = ('サブジャンル・・・　' + data.results.shop[0].sub_genre.name);
-    a.insertAdjacentElement('beforeend', bg8);
-
-    let div1 = document.createElement('div');
-    div1.setAttribute('id', 'div1');
-    s.insertAdjacentElement('afterend', div1);
-
-    let gurume1 = document.createElement('h2');
-    gurume1.setAttribute('id', 'ken');
-    gurume1.textContent = '検索結果';
-    div1.insertAdjacentElement('beforeend', gurume1);
-
-    let h1 = document.querySelector('h2#ken');
-
-
-    let h22 = document.createElement('h2');
-    h22.setAttribute('id', 'ken2');
-    h22.textContent = data.results.shop[1].name;
-    h1.insertAdjacentElement('afterend', h22);
-
-    let kk = document.createElement('ul');
-    kk.setAttribute('id', 'kuri');
-    h22.insertAdjacentElement('afterend', kk);
-
-    let b = document.querySelector('ul#kuri');
-
-    let kk5 = document.createElement('li');
-    kk5.setAttribute('id', 'izakaya1');
-    kk5.textContent = data.results.shop[1].genre.name;
-    b.insertAdjacentElement('beforeend', kk5);
-
-    let kk1 = document.createElement('li');
-    kk1.textContent = ('場所・・・　' + data.results.shop[1].access);
-    b.insertAdjacentElement('beforeend', kk1);
-
-    let kk2 = document.createElement('li');
-    kk2.textContent = ('住所・・・　' + data.results.shop[1].address);
-    b.insertAdjacentElement('beforeend', kk2);
-
-    let kk3 = document.createElement('li');
-    kk3.textContent = ('予算・・・　' + data.results.shop[1].budget.name);
-    b.insertAdjacentElement('beforeend', kk3);
-
-    let kk6 = document.createElement('li');
-    kk6.textContent = ('営業日時・営業時間・・・　' + data.results.shop[1].open);
-    b.insertAdjacentElement('beforeend', kk6);
-
-    let kk7 = document.createElement('li');
-    kk7.textContent = ('最寄駅・・・　' + data.results.shop[1].station_name);
-    b.insertAdjacentElement('beforeend', kk7);
-
-    let kk4 = document.createElement('li');
-    kk4.textContent = data.results.shop[1].catch;
-    b.insertAdjacentElement('beforeend', kk4);
-
-    let kk8 = document.createElement('li');
-    kk8.textContent = ('サブジャンル・・・　' + data.results.shop[1].sub_genre.name);
-    b.insertAdjacentElement('beforeend', kk8);
+  a(data);
 
   console.log(data);
 
@@ -391,8 +246,8 @@ function finish() {
 }
 
 
-/*function a(data) {
-  if (idx === 0) {
+function a(data) {
+  if (shurui1.checked) {
     kaz = kaz + 1;
     kaisu = kaisu + 1;
 
@@ -453,7 +308,7 @@ function finish() {
     bg4.textContent = data.results.shop[0].catch;
     a.insertAdjacentElement('beforeend', bg4);
 
-  } else if (idx === 0) {
+  } else if (shurui2.checked) {
     kaz1 = kaz1 + 1;
     kaisu = kaisu + 1;
 
@@ -531,4 +386,4 @@ function finish() {
       kaz1 = kaz1 - 1;
     }
   }
-}*/
+}
